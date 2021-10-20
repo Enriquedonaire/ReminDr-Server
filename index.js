@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import postRoutes from './routes/posts.js';
-
+import userRouter from "./routes/user.js";
 const app = express();
 dotenv.config();
 
@@ -14,6 +14,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use('/posts', postRoutes);
+app.use("/user", userRouter);
 
 app.get('/', (req, res) => {
     res.send('hello to memories API');
